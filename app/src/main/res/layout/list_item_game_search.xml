@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="games"
+            type="com.example.gamesearch.webservice.Games" />
+
+        <variable
+            name="gameSelectCallback"
+            type="com.example.gamesearch.gameSearch.OnGameSelectCallback" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_result_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/cardview_shadow_start_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{()->gameSelectCallback.onGameSelect(games)}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/game_image"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@id/card_layout"
+                app:layout_constraintEnd_toStartOf="@id/game_name"
+                app:layout_constraintStart_toStartOf="@id/card_layout"
+                app:layout_constraintTop_toTopOf="@id/card_layout" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/game_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="10dp"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@id/card_layout"
+                app:layout_constraintEnd_toEndOf="@id/card_layout"
+                app:layout_constraintStart_toEndOf="@id/game_image"
+                app:layout_constraintTop_toTopOf="@id/card_layout"
+                tools:text="Game name that is really long and should wrap" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
